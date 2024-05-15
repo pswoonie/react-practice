@@ -12,22 +12,20 @@ function Landing() {
     height: "100vh",
     width: "100vw",
   };
+
   return (
     <div style={landingStyle}>
       <Column height="100%" width="100%">
-        <AppBar height="65px">
-          <p>hi</p>
-          <p>login</p>
-        </AppBar>
+        <AppBar />
         <H_DIVIDER height="1px" width="100%" background="black" />
         <Row height="100%" width="100%">
           <Column height="100%">
-            <Spacer vertical="16px" />
-            <MENU_BUTTON className="menu-button">hello</MENU_BUTTON>
-            <Spacer vertical="16px" />
-            <MENU_BUTTON className="menu-button">hello</MENU_BUTTON>
-            <Spacer vertical="16px" />
-            <MENU_BUTTON className="menu-button">hello</MENU_BUTTON>
+            {["Link", "Link", "Link"].map((item, index) => (
+              <Column key={index}>
+                <Spacer vertical="16px" />
+                <MENU_BUTTON>{item}</MENU_BUTTON>
+              </Column>
+            ))}
           </Column>
           <V_DIVIDER
             height="100%"
@@ -36,12 +34,12 @@ function Landing() {
             background="black"
           />
           <Column height="100%">
-            <Spacer vertical="16px" />
-            <LIST_TILE>world</LIST_TILE>
-            <Spacer vertical="16px" />
-            <LIST_TILE>world</LIST_TILE>
-            <Spacer vertical="16px" />
-            <LIST_TILE>world</LIST_TILE>
+            {["todo", "todo", "todo"].map((item, index) => (
+              <Column key={index}>
+                <Spacer vertical="16px" />
+                <LIST_TILE>{item}</LIST_TILE>
+              </Column>
+            ))}
           </Column>
         </Row>
       </Column>

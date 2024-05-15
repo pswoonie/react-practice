@@ -9,6 +9,8 @@ function Row(props) {
     padding: props.padding,
     display: "flex",
     flexDirection: "row",
+    justifyContent: props.justifyContent,
+    alignItems: props.alignItems,
   };
 
   return <div style={rowStyle}>{props.children}</div>;
