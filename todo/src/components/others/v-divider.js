@@ -1,5 +1,5 @@
 /* props
- * height, width, margin, padding, content, background
+ * height, width, margin, padding, background
  */
 function V_DIVIDER(props) {
   const dividerStyle = {
@@ -7,7 +7,7 @@ function V_DIVIDER(props) {
     width: props.width,
     margin: props.margin,
     padding: props.padding,
-    content: props.content,
+    content: "",
     background: props.background,
   };
   return <div style={dividerStyle}></div>;
