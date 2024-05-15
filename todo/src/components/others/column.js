@@ -3,8 +3,8 @@
  */
 function Column(props) {
   const columnStyle = {
-    height: "100%",
-    width: "100%",
+    height: props.height,
+    width: props.width,
     margin: props.margin,
     padding: props.padding,
     display: "flex",

@@ -1,0 +1,16 @@
+.button {
+  height: 35px;
+  line-height: 35px;
+  width: fit-content;
+  margin: 0 0 0 16px;
+  padding: 6px 16px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: red;
+  transform: scale(1.3);
+}
