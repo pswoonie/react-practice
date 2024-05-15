@@ -7,7 +7,8 @@ function Column(props) {
     width: "100%",
     margin: props.margin,
     padding: props.padding,
-    display: "block",
+    display: "flex",
+    flexDirection: "column",
   };
   return <div style={columnStyle}>{props.children}</div>;
 }
