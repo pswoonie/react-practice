@@ -27,7 +27,6 @@ function Landing() {
   };
 
   const onTodoComplete = (isComplete) => {
-    console.log(isComplete);
     if (isComplete) {
       setCount((prev) => (prev += 1));
     } else {

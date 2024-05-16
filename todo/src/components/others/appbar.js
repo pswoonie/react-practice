@@ -1,6 +1,8 @@
 import Row from "./row.js";
 import Button from "./button/button.js";
 
+import { useNavigate } from "react-router-dom";
+
 function Leading(props) {
   const leadingStyle = {
     margin: "0 0 0 16px",
@@ -23,10 +25,17 @@ function Trailing(props) {
  * height
  */
 function AppBar(props) {
+  const navigate = useNavigate();
+
   const appbarStyle = {
     height: props.height ?? "65px",
     width: "100%",
   };
+
+  const goto = () => {
+    navigate("/login");
+  };
+
   return (
     <div style={appbarStyle}>
       <Row
@@ -37,7 +46,7 @@ function AppBar(props) {
       >
         <Leading>completed: {props.count ?? 0}</Leading>
         <Trailing>
-          <Button>Login</Button>
+          <Button onClick={goto}>Login</Button>
         </Trailing>
       </Row>
     </div>
