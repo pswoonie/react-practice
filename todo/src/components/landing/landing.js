@@ -6,17 +6,41 @@ import V_DIVIDER from "../others/v-divider.js";
 import MENU_BUTTON from "../others/menu-button/menu-button.js";
 import LIST_TILE from "../others/list-tile/list-tile.js";
 import Spacer from "../others/spacer.js";
+import AddTodo from "./add-todo.js";
+import Button from "../others/button/button.js";
+
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function Landing() {
+  const [todoList, setList] = useState(["todo1", "todo2", "todo3"]);
+  const [count, setCount] = useState(0);
+
   const landingStyle = {
     height: "100vh",
     width: "100vw",
   };
 
+  const onListCallback = (inputValue) => {
+    setList((prev) => [...prev, inputValue]);
+  };
+
+  const onTodoComplete = (isComplete) => {
+    console.log(isComplete);
+    if (isComplete) {
+      setCount((prev) => (prev += 1));
+    } else {
+      if (count > 0) {
+        setCount((prev) => (prev -= 1));
+      }
+    }
+  };
+
   return (
     <div style={landingStyle}>
       <Column height="100%" width="100%">
-        <AppBar />
+        <AppBar count={count} />
         <H_DIVIDER height="1px" width="100%" background="black" />
         <Row height="100%" width="100%">
           <Column height="100%">
@@ -34,10 +58,23 @@ function Landing() {
             background="black"
           />
           <Column height="100%">
-            {["todo", "todo", "todo"].map((item, index) => (
+            <AddTodo addTaskCallback={onListCallback} />
+            {todoList.map((item, index) => (
               <Column key={index}>
                 <Spacer vertical="16px" />
-                <LIST_TILE>{item}</LIST_TILE>
+                <Row>
+                  <LIST_TILE completedCountCallback={onTodoComplete}>
+                    {item}
+                  </LIST_TILE>
+                  <Button
+                    margin="0 0 0 16px"
+                    onClick={() => {
+                      setList((prev) => prev.filter((_, i) => i !== index));
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </Button>
+                </Row>
               </Column>
             ))}
           </Column>
