@@ -4,7 +4,6 @@ import styles from "./tile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareCheck } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
 
 // Leading element
 function Leading(props) {
@@ -12,15 +11,7 @@ function Leading(props) {
     margin: "0 0 0 8px",
   };
 
-  return (
-    <div style={leadingStyle}>
-      {props.checked ? (
-        <FontAwesomeIcon icon={faSquareCheck} />
-      ) : (
-        <FontAwesomeIcon icon={faSquare} />
-      )}
-    </div>
-  );
+  return <div style={leadingStyle}>{props.children}</div>;
 }
 
 // Center element
@@ -42,22 +33,28 @@ function Trailing(props) {
 }
 
 function LIST_TILE(props) {
-  const [isChecked, setClickState] = useState(false);
+  const id = props.param.id;
+  const isChecked = props.param.isChecked;
 
   const tileStyle = {
     position: "relative",
   };
 
-  const handleClickAction = () => {
-    setClickState(!isChecked);
-    props.completedCountCallback(!isChecked);
+  const onClick = () => {
+    props.completedCountCallback({ id: id, isChecked: !isChecked });
   };
 
   return (
-    <div className={styles.tile} style={tileStyle} onClick={handleClickAction}>
+    <div className={styles.tile} style={tileStyle} onClick={onClick}>
       <Row width="100%" justifyContent="space-between">
-        <Leading checked={isChecked}></Leading>
-        <Title>{props.children}</Title>
+        <Leading>
+          {isChecked ? (
+            <FontAwesomeIcon icon={faSquareCheck} />
+          ) : (
+            <FontAwesomeIcon icon={faSquare} />
+          )}
+        </Leading>
+        <Title>{props.param.text}</Title>
         <Trailing></Trailing>
       </Row>
     </div>

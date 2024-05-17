@@ -9,13 +9,29 @@ import Spacer from "../others/spacer.js";
 import AddTodo from "./add-todo.js";
 import Button from "../others/button/button.js";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function Landing() {
-  const [todoList, setList] = useState(["todo1", "todo2", "todo3"]);
-  const [count, setCount] = useState(0);
+  const initialList = [
+    {
+      text: "todo",
+      isChecked: false,
+    },
+    {
+      text: "todo",
+      isChecked: false,
+    },
+    {
+      text: "todo",
+      isChecked: false,
+    },
+  ];
+
+  const count = useRef(0);
+
+  const [todoList, setList] = useState(initialList);
 
   const landingStyle = {
     height: "100vh",
@@ -23,23 +39,29 @@ function Landing() {
   };
 
   const onListCallback = (inputValue) => {
-    setList((prev) => [...prev, inputValue]);
+    setList((prev) => [...prev, { text: inputValue, isChecked: false }]);
   };
 
-  const onTodoComplete = (isComplete) => {
-    if (isComplete) {
-      setCount((prev) => (prev += 1));
+  const onTodoComplete = (data) => {
+    if (data.isChecked) {
+      count.current++;
     } else {
-      if (count > 0) {
-        setCount((prev) => (prev -= 1));
+      if (count.current > 0) {
+        count.current--;
       }
     }
+
+    setList((prev) =>
+      prev.map((item, index) =>
+        index === data.id ? { ...item, isChecked: !item.isChecked } : item
+      )
+    );
   };
 
   return (
     <div style={landingStyle}>
       <Column height="100%" width="100%">
-        <AppBar count={count} />
+        <AppBar count={count.current} />
         <H_DIVIDER height="1px" width="100%" background="black" />
         <Row height="100%" width="100%">
           <Column height="100%">
@@ -62,13 +84,14 @@ function Landing() {
               <Column key={index}>
                 <Spacer vertical="16px" />
                 <Row>
-                  <LIST_TILE completedCountCallback={onTodoComplete}>
-                    {item}
-                  </LIST_TILE>
+                  <LIST_TILE
+                    param={{ ...item, id: index }}
+                    completedCountCallback={onTodoComplete}
+                  ></LIST_TILE>
                   <Button
                     margin="0 0 0 16px"
                     onClick={() => {
-                      setList((prev) => prev.filter((_, i) => i !== index));
+                      setList(todoList.filter((_, i) => i !== index));
                     }}
                   >
                     <FontAwesomeIcon icon={faTrashCan} />
