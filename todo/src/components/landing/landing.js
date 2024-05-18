@@ -10,6 +10,7 @@ import AddTodo from "./add-todo.js";
 import Button from "../others/button/button.js";
 
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
@@ -29,6 +30,8 @@ function Landing() {
     },
   ];
 
+  const navigate = useNavigate();
+
   const count = useRef(0);
 
   const [todoList, setList] = useState(initialList);
@@ -36,6 +39,10 @@ function Landing() {
   const landingStyle = {
     height: "100vh",
     width: "100vw",
+  };
+
+  const goto = () => {
+    navigate("/login");
   };
 
   const onListCallback = (inputValue) => {
@@ -61,7 +68,10 @@ function Landing() {
   return (
     <div style={landingStyle}>
       <Column height="100%" width="100%">
-        <AppBar count={count.current} />
+        <AppBar
+          leading={`completed: ${count.current}`}
+          trailing={<Button onClick={goto}>Login</Button>}
+        />
         <H_DIVIDER height="1px" width="100%" background="black" />
         <Row height="100%" width="100%">
           <Column height="100%">

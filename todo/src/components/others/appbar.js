@@ -1,7 +1,4 @@
 import Row from "./row.js";
-import Button from "./button/button.js";
-
-import { useNavigate } from "react-router-dom";
 
 function Leading(props) {
   const leadingStyle = {
@@ -25,15 +22,10 @@ function Trailing(props) {
  * height
  */
 function AppBar(props) {
-  const navigate = useNavigate();
-
   const appbarStyle = {
     height: props.height ?? "65px",
     width: "100%",
-  };
-
-  const goto = () => {
-    navigate("/login");
+    background: props.color,
   };
 
   return (
@@ -44,10 +36,8 @@ function AppBar(props) {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Leading>completed: {props.count ?? 0}</Leading>
-        <Trailing>
-          <Button onClick={goto}>Login</Button>
-        </Trailing>
+        <Leading>{props.leading}</Leading>
+        <Trailing>{props.trailing}</Trailing>
       </Row>
     </div>
   );
