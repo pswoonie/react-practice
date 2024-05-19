@@ -4,7 +4,7 @@
 function Row(props) {
   const rowStyle = {
     height: props.height,
-    width: props.width,
+    width: "100%",
     margin: props.margin,
     padding: props.padding,
     display: "flex",

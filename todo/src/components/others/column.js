@@ -3,12 +3,14 @@
  */
 function Column(props) {
   const columnStyle = {
-    height: props.height,
+    height: "100%",
     width: props.width,
     margin: props.margin,
     padding: props.padding,
     display: "flex",
     flexDirection: "column",
+    justifyContent: props.justifyContent,
+    alignItems: props.alignItems,
   };
   return <div style={columnStyle}>{props.children}</div>;
 }

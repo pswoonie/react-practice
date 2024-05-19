@@ -1,6 +1,6 @@
 import AppBar from "../others/appbar";
 import Column from "../others/column";
-import CustomForm from "../others/form";
+import CustomForm from "../others/form/form";
 
 import { Drawer, DrawerButton } from "../others/drawer/drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,7 +21,7 @@ function Login() {
 
   return (
     <div style={loginStyle}>
-      <Column height="100%" width="100%">
+      <Column width="100%">
         <Drawer
           width="300px"
           color="#e6e6e4"

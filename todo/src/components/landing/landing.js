@@ -67,14 +67,14 @@ function Landing() {
 
   return (
     <div style={landingStyle}>
-      <Column height="100%" width="100%">
+      <Column width="100%">
         <AppBar
           leading={`completed: ${count.current}`}
           trailing={<Button onClick={goto}>Login</Button>}
         />
         <H_DIVIDER height="1px" width="100%" background="black" />
-        <Row height="100%" width="100%">
-          <Column height="100%">
+        <Row height="100%">
+          <Column>
             {["Link", "Link", "Link"].map((item, index) => (
               <Column key={index}>
                 <Spacer vertical="16px" />
@@ -88,7 +88,7 @@ function Landing() {
             margin="0 16px"
             background="black"
           />
-          <Column height="100%">
+          <Column>
             <AddTodo addTaskCallback={onListCallback} />
             {todoList.map((item, index) => (
               <Column key={index}>

@@ -46,7 +46,7 @@ function LIST_TILE(props) {
 
   return (
     <div className={styles.tile} style={tileStyle} onClick={onClick}>
-      <Row width="100%" justifyContent="space-between">
+      <Row justifyContent="space-between">
         <Leading>
           {isChecked ? (
             <FontAwesomeIcon icon={faSquareCheck} />

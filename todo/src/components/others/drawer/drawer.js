@@ -44,8 +44,8 @@ export function Drawer(props) {
         onClick={handleCallback}
       ></div>
       <div className={styles.drawer} style={drawerStyle}>
-        <Column height="100%">
-          <Row width="100%" justifyContent="space-between" alignItems="center">
+        <Column>
+          <Row justifyContent="space-between" alignItems="center">
             <p className={styles.title}>{props.title}</p>
             <button className={styles.back_arrow} onClick={handleCallback}>
               <FontAwesomeIcon icon={faArrowLeftLong} size="2x" />

@@ -30,12 +30,7 @@ function AppBar(props) {
 
   return (
     <div style={appbarStyle}>
-      <Row
-        height="100%"
-        width="100%"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Row height="100%" justifyContent="space-between" alignItems="center">
         <Leading>{props.leading}</Leading>
         <Trailing>{props.trailing}</Trailing>
       </Row>
