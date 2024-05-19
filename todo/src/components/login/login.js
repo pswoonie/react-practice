@@ -1,9 +1,10 @@
 import AppBar from "../others/appbar";
 import Column from "../others/column";
+import CustomForm from "../others/form";
+
 import { Drawer, DrawerButton } from "../others/drawer/drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-
 import { useState } from "react";
 
 function Login() {
@@ -41,6 +42,7 @@ function Login() {
             </DrawerButton>
           }
         ></AppBar>
+        <CustomForm></CustomForm>
       </Column>
     </div>
   );
