@@ -24,6 +24,7 @@ function Login() {
         <Drawer
           width="300px"
           color="#e6e6e4"
+          title="drawer"
           isOpen={toggle}
           callback={clickCallback}
         ></Drawer>
