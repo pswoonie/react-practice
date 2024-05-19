@@ -8,7 +8,7 @@ function CustomForm(props) {
   return (
     <div className={styles.login} style={formStyle}>
       <Row justifyContent="center">
-        <Column>
+        <Column width="300px">
           <h2>Login</h2>
           <form>
             <Column>
@@ -24,11 +24,11 @@ function CustomForm(props) {
                 placeholder="Password"
                 autoComplete="on"
               />
-              <label htmlFor="remember">
+              <Row alignItems="center" margin="0 0">
                 <input type="checkbox" id="remember" />
-                Remember Me
-              </label>
-              <input type="submit" value="Login" />
+                <label htmlFor="remember">Remember Me</label>
+              </Row>
+              <input type="button" value="Login" />
             </Column>
           </form>
         </Column>
