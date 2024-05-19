@@ -5,7 +5,6 @@ import H_DIVIDER from "../others/h-divider.js";
 import V_DIVIDER from "../others/v-divider.js";
 import MENU_BUTTON from "../others/menu-button/menu-button.js";
 import LIST_TILE from "../others/list-tile/list-tile.js";
-import Spacer from "../others/spacer.js";
 import AddTodo from "./add-todo.js";
 import Button from "../others/button/button.js";
 
