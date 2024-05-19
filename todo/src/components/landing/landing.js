@@ -76,10 +76,7 @@ function Landing() {
         <Row height="100%">
           <Column>
             {["Link", "Link", "Link"].map((item, index) => (
-              <Column key={index}>
-                <Spacer vertical="16px" />
-                <MENU_BUTTON>{item}</MENU_BUTTON>
-              </Column>
+              <MENU_BUTTON key={index}>{item}</MENU_BUTTON>
             ))}
           </Column>
           <V_DIVIDER
@@ -91,23 +88,20 @@ function Landing() {
           <Column>
             <AddTodo addTaskCallback={onListCallback} />
             {todoList.map((item, index) => (
-              <Column key={index}>
-                <Spacer vertical="16px" />
-                <Row>
-                  <LIST_TILE
-                    param={{ ...item, id: index }}
-                    completedCountCallback={onTodoComplete}
-                  ></LIST_TILE>
-                  <Button
-                    margin="0 0 0 16px"
-                    onClick={() => {
-                      setList(todoList.filter((_, i) => i !== index));
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faTrashCan} />
-                  </Button>
-                </Row>
-              </Column>
+              <Row key={index}>
+                <LIST_TILE
+                  param={{ ...item, id: index }}
+                  completedCountCallback={onTodoComplete}
+                ></LIST_TILE>
+                <Button
+                  margin="16px 0 0 16px"
+                  onClick={() => {
+                    setList(todoList.filter((_, i) => i !== index));
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrashCan} />
+                </Button>
+              </Row>
             ))}
           </Column>
         </Row>
