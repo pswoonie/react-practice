@@ -1,0 +1,14 @@
+.button {
+  height: var(--height);
+  line-height: var(--height);
+  width: var(--width);
+  padding: var(--padding);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.button:hover {
+  color: red;
+  transform: scale(1.1);
+}
